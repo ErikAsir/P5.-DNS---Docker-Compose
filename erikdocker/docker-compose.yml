@@ -1,0 +1,16 @@
+ version: '3.8'
+
+ services:
+  bind9:
+    image: internetsystemsconsortium/bind9:9.18
+    container_name: servidor_bind9
+    ports:
+      - 53:54/tcp
+      - 53:54/udp
+      - 127.0.0.1:953:953/tcp
+    volumes:
+      - ./config:/etc/bind
+      - ./data:/var/cache/bind
+    environment:
+      - TZ=UTC
+    restart: always 
